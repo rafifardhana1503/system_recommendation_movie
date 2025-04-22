@@ -114,18 +114,22 @@ Pada tahap ini, pengembangan model dilakukan dengan menggunakan:
 **Metode Evaluasi**\
 Evaluasi ini tidak menggunakan metrik numerik, sebab evaluasi lebih difokuskan terhadap relevansi rekomendasi berdasarkan fitur metadata.\
 Evaluasi ini hanya dapat dilihat dari cosine similarity (skor kemiripan) terhadap film yang dipilih.
-- Lebih dari 60: Sangat mirip (biasanya sekuel atau series)
-- 0.50 - 0.60: Masih sangat relevan
-- 0.30 - 0.50: Mirip secara tema/genre/universe
-- < 30: Sudah mulai kurang relevan, bisa secara tema/genre/universe/pemeran/sutradara
+|    Kategori    |   Skor        |   Definisi                                           |
+|----------------|---------------|------------------------------------------------------|
+| Sangat Tinggi  |  > 0.60       | Sangat Mirip banget (biasanya sekuel atau satu seri) |
+| Tinggi         |  0.50 - 0.60  | Masih sangat relevan                                 |
+| Sedang         |  0.30 - 0.50  | Mirip secara tema/genre/universe                     |
+| Rendah         |  < 0.30       | Sudah mulai kurang relevan                           |
 
-**Evaluasi penggunaan sistem rekomendasi 1 (satu)**
+**Evaluasi penggunaan sistem rekomendasi 1 (satu):**\
+**Film yang dipilih: Iron Man**
 - Top 5 rekomendasi sangat baik — semuanya berada dalam narasi atau konflik yang dekat dengan Tony Stark/Iron Man.
 - Skor cosine similarity di atas 0.4 bisa dianggap cukup bagus untuk TF-IDF sederhana.
 - Film seperti Iron Man 2, Iron Man 3, dan Civil War memang secara narasi dan karakter sangat dekat.
 - Urutan 6 ke bawah memang memiliki skor cosine rendah tetapi masih ada relevansi tema dan universe yang sama dari alur film Iron Man
 
 **Evaluasi penggunaan sistem rekomendasi 2 (dua)**
+**Film yang dipilih: The Fast and the Furious**
 - Top 3 rekomendasi sangat baik - semuanya relevan sebab berasal dari produksi yang sama, memiliki karakter utama yang sama, tema dan gaya penyutradaraan mirip.
 - Rekomendasi film urutan 3 ke atas memiliki narasi yang sangat dekat sebab film-film ini merupakan bagian dari cerita sekuensial film yang dipilih
 - Urutan 4 ke bawah memiliki skor cosine sedang ke rendah, sebab relevansi nya hanya pemeran utama, genre, dan aksi yang sama. Tidak memiliki relevansi yang kuat dengan cerita Fast & Furious
