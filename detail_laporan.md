@@ -23,7 +23,7 @@ Dengan semakin banyaknya konten yang tersedia di platform streaming film, penggu
 - Mengembangkan sistem rekomendasi film berbasis content-based filtering.
 - Memberikan output top-N rekomendasi film yang mirip dengan film yang dipilih pengguna.
 
-**Rubrik/Kriteria Tambahan**:\
+**Rubrik/Kriteria Tambahan**:
 ### Solution statements
 - Menggunakan pendekatan Content-Based Filtering, hal ini dilakukan dengan memanfaatkan deskripsi film, genre, aktor, dan sutradara sebagai fitur konten. Kemiripan antar film akan diukur berdasarkan kesamaan fitur-fitur ini.
 - Menggunakan teknik pemrosesan bahasa alami (NLP) seperti tokenization, lowercasing, dan stemming pada deskripsi film.
@@ -47,22 +47,22 @@ Variabel-variabel pada TMDB 500 Movie Dataset adalah sebagai berikut. Variabel y
 
 **Rubrik/Kriteria Tambahan**:\
 Melakukan Exploratory Data Analysis:
-1. Univariate Data Analysis
-    a. Movies Dataset
-        - Mengeksplor bagan (baris dan kolom) dari dataset menggunakan fungsi `head()`
-        - Mengecek info dataset menggunakan fungsi `info()`
+1. Univariate Data Analysis\
+    a. Movies Dataset\
+        - Mengeksplor bagan (baris dan kolom) dari dataset menggunakan fungsi `head()`\
+        - Mengecek info dataset menggunakan fungsi `info()`\
         - Mengecek jumlah judul film pada dataset
 
-    b. Credits Dataset
-        - Mengeksplor bagan (baris dan kolom) dari dataset menggunakan fungsi `head()`
+    b. Credits Dataset\
+        - Mengeksplor bagan (baris dan kolom) dari dataset menggunakan fungsi `head()`\
         - Mengecek info dataset menggunakan fungsi `info()`
 
-2. Data Preprocessing
-    a. Mengubah dan Memastikan Nama Kolom
-        - Mengubah nama kolom pada salah satu dataset guna menyelaraskan nama sebelum penggabungan dengan `rename()`
+2. Data Preprocessing\
+    a. Mengubah dan Memastikan Nama Kolom\
+        - Mengubah nama kolom pada salah satu dataset guna menyelaraskan nama sebelum penggabungan dengan `rename()`\
         - Melakukan drop pada kolom judul pada salah satu dataset yang serupa di dataset lainnya dengan `drop()`
 
-    b. Menggabungkan Dataset 
+    b. Menggabungkan Dataset \
         - Membuat dataset baru dengan melakukan penggabungan dataset movie dan dataset credits menggunakan `merge()` sebelum memasuki tahap persiapan data
 
 ## Data Preparation
@@ -71,17 +71,17 @@ Melakukan tiga tahap persiapan data, yaitu:
 2. Mengekstrak, Menggabungkan, dan Memberi Bobot List pada Isi Fitur
 3. Normalisasi Teks (Cleaning Text) pada Isi Fitur
 
-**Rubrik/Kriteria Tambahan**:\ 
-- Tahap 1:\
+**Rubrik/Kriteria Tambahan**:
+- Tahap 1:
     - Membuat dataset baru, dengan memilih fitur yang dibutuhkan saja
     - Melakukan pengecekan terhadap missing value dan duplikasi pada fitur. Terindikasi 3 missing value pada overview
     - Sebab gambaran umum (overview) dari film tidak kita ketahui, lebih baik baris missing value di hapus. Sehingga dataset terdiri dari 4800 baris dan 7 kolom penting
-- Tahap 2:\
+- Tahap 2:
     - Beberapa kolom seperti genres, keywords, cast, dan crew berisi data dalam format JSON. Perlu dilakukan ekstraksi untuk mendapatkan daftar genre, kata kunci, nama aktor, dan nama sutradara
     - Menggabungkan teks dari kolom overview, daftar genre, keywords, nama aktor, dan nama sutradara menjadi satu representasi teks (kolom "tags") untuk setiap film. Ini akan menjadi input utama untuk perhitungan kemiripan konten
     - Memberikan pembobotan pada fitur yang dianggap berpengaruh seperti fitur keywords, cast, dan crew
     - Membuat dataset final yang terdiri dari id film, judul film, dan representasi film ("tags")
-- Tahap 3:\
+- Tahap 3:
     - Melakukan pembersihan (normalisasi) teks pada kolom "tags" sebelum masuk ke tahap modeling. Hal ini dilakukan agar model dapat mengolah representasi film untuk memperoleh hasil konten yang serupa
         - Lowercase: Mengubah teks menjadi huruf kecil
         - Re.sub: Menghilangkan karakter yang bukan spasi dan huruf
