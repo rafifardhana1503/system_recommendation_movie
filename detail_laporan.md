@@ -9,8 +9,10 @@ Proyek ini penting karena mengembangkan sistem rekomendasi film berbasis konten 
 - Membantu Pengambilan Keputusan, sistem rekomendasi dapat meningkatkan retensi pengguna, hal ini berkaitan dalam pengambilan keputusan pengguna yang mana dapat merasa terbantu dalam menemukan konten yang menarik di dalam platform
 
 Referensi:
-- Fajriansyah, M., Adikara, P. P., & Widodo, A. W. (2021). Sistem Rekomendasi Film Menggunakan Content Based Filtering. Jurnal Pengembangan Teknologi Informasi dan Ilmu Komputer, 5(6), 2188-2199.
-- Arfisko, H. H., & Wibowo, A. T. (2022). Sistem Rekomendasi Film Menggunakan Metode Hybrid Collaborative Filtering Dan Content-Based Filtering. eProceedings of Engineering, 9(3).
+- Fajriansyah, M., Adikara, P. P., & Widodo, A. W. (2021). Sistem Rekomendasi Film Menggunakan Content Based Filtering. Jurnal Pengembangan Teknologi Informasi dan Ilmu Komputer, 5(6), 2188-2199.\
+  Diakses melalui: [Sistem Rekomendasi Film Menggunakan Content Based Filtering](http://j-ptiik.ub.ac.id/index.php/j-ptiik/article/view/9163)
+- Arfisko, H. H., & Wibowo, A. T. (2022). Sistem Rekomendasi Film Menggunakan Metode Hybrid Collaborative Filtering Dan Content-Based Filtering. eProceedings of Engineering, 9(3).\
+  Diakses melalui: [Sistem Rekomendasi Film Menggunakan Metode Hybrid Collaborative Filtering Dan Content-Based Filtering](https://openlibrarypublications.telkomuniversity.ac.id/index.php/engineering/article/view/18066)
 
 ## Business Understanding
 Dengan semakin banyaknya konten yang tersedia di platform streaming film, pengguna dihadapkan pada pilihan yang sangat beragam. Tanpa bantuan sistem yang tepat, pengguna mungkin kesulitan menemukan konten yang sesuai dengan preferensi mereka, yang dapat berdampak pada pengalaman pengguna (user experience) dan keterlibatan mereka dengan platform. Dari sudut pandang bisnis, menampilkan konten yang relevan secara konsisten dapat meningkatkan waktu tayang pengguna (watch time), retensi pelanggan, dan pada akhirnya meningkatkan pendapatan melalui langganan yang lebih lama atau konsumsi konten berbayar yang lebih banyak.
