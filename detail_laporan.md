@@ -1,6 +1,6 @@
 # Laporan Proyek Machine Learning - Rafif Idris Ardhana
 
-## Project Overview
+## Project Overview: Sistem Rekomendasi Film
 Kebiasaan menonton acara televisi dan film kini menjadi jauh lebih mudah berkat kemajuan internet. Layanan streaming seperti Netflix, Disney+ Hotstar, Vidio, Vision+, dan sejenisnya  memberikan kemudahan bagi pengguna untuk menikmati tayangan favorit mereka kapan saja dan melalui berbagai perangkat. Masing-masing platform ini menyediakan ribuan pilihan tontonan, misalnya Netflix yang memiliki banyak koleksi judul film dari segala penjuru dunia. Contoh lain seperti Vidio yang juga memiliki banyak koleksi film serta akses ke tontonan olahraga favorit. Dengan banyaknya konten yang tersedia, keberadaan sistem rekomendasi menjadi sangat krusial. Sistem ini membantu pengguna menemukan tayangan yang sesuai dengan preferensi mereka, sehingga pengalaman menonton menjadi lebih personal. Dari sisi bisnis, sistem rekomendasi juga berperan dalam memperpanjang waktu interaksi pengguna dengan platform melalui penyajian konten yang relevan. Hal ini berpotensi meningkatkan loyalitas pengguna sekaligus berdampak positif pada pendapatan platform. Oleh karena itu, fitur rekomendasi menjadi elemen esensial yang wajib dimiliki oleh layanan streaming film dan televisi.
 
 **Rubrik/Kriteria Tambahan**:\
@@ -26,7 +26,7 @@ Dengan semakin banyaknya konten yang tersedia di platform streaming film, penggu
 **Rubrik/Kriteria Tambahan**:
 ### Solution statements
 - Menggunakan pendekatan Content-Based Filtering, hal ini dilakukan dengan memanfaatkan deskripsi film, genre, aktor, dan sutradara sebagai fitur konten. Kemiripan antar film akan diukur berdasarkan kesamaan fitur-fitur ini.
-- Menggunakan teknik pemrosesan bahasa alami (NLP) seperti tokenization, lowercasing, dan stemming pada deskripsi film.
+- Menggunakan teknik pemrosesan bahasa alami (NLP) seperti tokenization, formatting text, lowercasing, dan lemmatization pada deskripsi film.
 - Menggunakan algoritma Term Frequency-Inverse Document Frequency (TF-IDF) untuk mengubah teks deskripsi menjadi vektor numerik.
 - Menghitung cosine similarity antara vektor representasi film untuk mengukur kemiripan konten.
 
@@ -112,7 +112,7 @@ Pada tahap ini, pengembangan model dilakukan dengan menggunakan:
 
 ## Evaluation
 **Metode Evaluasi**\
-Evaluasi ini tidak menggunakan metrik numerik, sebab evaluasi lebih difokuskan terhadap relevansi rekomendasi berdasarkan fitur metadata.\
+Evaluasi ini tidak menggunakan metrik numerik, sebab evaluasi sistem rekomendasi content-based filteting lebih difokuskan terhadap relevansi rekomendasi berdasarkan fitur metadata.\
 Evaluasi ini hanya dapat dilihat dari cosine similarity (skor kemiripan) terhadap film yang dipilih.
 |    Kategori    |   Skor        |   Definisi                                           |
 |----------------|---------------|------------------------------------------------------|
@@ -128,8 +128,39 @@ Evaluasi ini hanya dapat dilihat dari cosine similarity (skor kemiripan) terhada
 - Film seperti Iron Man 2, Iron Man 3, dan Civil War memang secara narasi dan karakter sangat dekat.
 - Urutan 6 ke bawah memang memiliki skor cosine rendah tetapi masih ada relevansi tema dan universe yang sama dari alur film Iron Man
 
-**Evaluasi penggunaan sistem rekomendasi 2 (dua)**
+**Evaluasi penggunaan sistem rekomendasi 2 (dua)**\
 **Film yang dipilih: The Fast and the Furious**
 - Top 3 rekomendasi sangat baik - semuanya relevan sebab berasal dari produksi yang sama, memiliki karakter utama yang sama, tema dan gaya penyutradaraan mirip.
 - Rekomendasi film urutan 3 ke atas memiliki narasi yang sangat dekat sebab film-film ini merupakan bagian dari cerita sekuensial film yang dipilih
 - Urutan 4 ke bawah memiliki skor cosine sedang ke rendah, sebab relevansi nya hanya pemeran utama, genre, dan aksi yang sama. Tidak memiliki relevansi yang kuat dengan cerita Fast & Furious
+
+**Evaluasi Deskriptif**\
+Tanpa penerapan model machine learning seperti sistem rekomendasi, platform streaming akan mengalami berbagai tantangan dalam aspek bisnis. Pengguna akan kesulitan menemukan konten yang sesuai dengan preferensi mereka, sehingga menciptakan pengalaman pengguna yang buruk dan berpotensi menurunkan waktu tayang (watch time). Ketika pengguna merasa tidak puas, kemungkinan besar mereka tidak akan kembali, yang berdampak pada rendahnya retensi pelanggan. Akibatnya, peluang monetisasi juga menurun karena sedikitnya konsumsi konten berbayar dan tidak maksimalnya strategi penawaran konten. Tanpa sistem cerdas yang mampu mempersonalisasi rekomendasi, platform kesulitan bersaing dalam industri yang sangat kompetitif.
+
+**1. Evaluasi terhadap Problem Statement**
+- **Bagaimana solusi bagi pengguna agar tidak kesulitan dalam menemukan konten film sesuai dengan preferensi mereka pada platform streaming?**
+  Masalah ini telah berhasil dijawab dengan melakukan pengembangan model menggunakan pendekatan content-based filtering telah terbukti mampu menyarankan film-film yang relevan dengan preferensi pengguna. Hasil evaluasi dengan contoh film Iron Man dan The Fast and the Furious menunjukkan bahwa sistem ini secara efektif menyarankan film yang memiliki kesamaan narasi, genre, dan karakteristik utama.
+- **Bagaimana memberikan suatu pertimbangan bagi pengguna untuk bertahan dalam menggunakan platform streaming?**
+  Masalah ini telah berhasil dijawab dengan menyediakan Top-N rekomendasi film yang relevan dan personal, sistem ini memberikan pengalaman menonton yang lebih menyenangkan dan membuat pengguna lebih engaged.
+
+**2. Evaluasi terhadap Goals**
+- **Mengembangkan sistem rekomendasi film berbasis content-based filtering.**
+  Tujuan ini tercapai dengan berhasilnya membangun model menggunakan kombinasi metadata film (genre, kata kunci, aktor, sutradara, dan deskripsi) yang diproses dengan TF-IDF dan Cosine Similarity. Evaluasi pada dua skenario film membuktikan sistem rekomenadi bekerja dengan baik dalam menyarankan film-film yang relevan.
+- **Memberikan output top-N rekomendasi film yang mirip dengan film yang dipilih pengguna.**
+  Tujuan ini tercapai dengan berhasil memperoleh output dalam menyajikan daftar film yang memiliki skor cosine similarity tinggi dan sedang, menandakan relevansi yang cukup kuat. Dalam kedua kasus uji (Iron Man dan Fast and Furious), rekomendasi teratas sangat relevan, bahkan melibatkan sekuel atau film dengan universe yang sama.
+
+**3. Evaluasi terhadap Solution Statements**
+- **Menggunakan pendekatan Content-Based Filtering, hal ini dilakukan dengan memanfaatkan deskripsi film, genre, aktor, dan sutradara sebagai fitur konten. Kemiripan antar film akan diukur berdasarkan kesamaan fitur-fitur ini**
+  Pendekatan ini berhasil mengukur atau memetakan kemiripan antara film berdasarkan fitur-fitur terpilih, yang memungkinkan sistem memahami konten film secara mendalam
+- **Menggunakan teknik pemrosesan bahasa alami (NLP) seperti tokenization, formatting text, lowercasing, dan lemmatization pada deskripsi film**
+  Teknik ini berhasil memastikan bahwa text pada fitur diolah menjadi text yang konsisten dan dapat diproses secara efisien dengan TF-IDF
+- **Menggunakan algoritma Term Frequency-Inverse Document Frequency (TF-IDF) untuk mengubah teks deskripsi menjadi vektor numerik**
+  TF-IDF telah efektif dalam merepresentasikan pentingnya kata-kata (mengubah teks menjadi vektor numerik) dalam fitur "tags" pada dataset final, sehingga membantu sistem menangkap karakteristik unik dari setiap film.
+- **Menghitung cosine similarity antara vektor representasi film untuk mengukur kemiripan konten**
+  Cosine Similarity mampu memberikan skor numerik kemiripan antar film. Kategori skor kemiripan yang digunakan memberikan interpretasi yang mudah dipahami untuk mengevaluasi hasil.
+
+Dengan menggunakan Content-Based Filtering menggunakan algoritma TF-IDF dan penilaian Cosine Similarity dalam membangun sistem rekomendasi, diharapkan model ini dapat membantu memberikan dampak signifikan terhadap pemahaman bisnis dan potensi pertumbuhan platform streaming film.
+- Peningkatan user experience, membantu pengguna agar tidak kebingungan memilih film sebab sistem telah memberikan rekomendasi sesuai dengan preferensi mereka
+- Meningkatkan _watch time_ pengguna, dengan memberikan rekomendasi yang relevan, pengguna mungkin lebih cenderung untuk menghabiskan waktu lebih lama dalam platform
+- Meningkatkan retensi pelanggan, dapat mempertahankan pengguna di platform karena mereka merasa konten yang ditawarkan sesuai dengan selera mereka.
+- Peluang monetasi lebih besar/ dapat meningkat, peningkatan watch time dan loyalitas dapat memberikan peluang konsumsi konten berbayar juga meningkat. Hal ini dapat memberikan peningkatan pendapatan platform.
