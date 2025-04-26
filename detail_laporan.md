@@ -1,7 +1,9 @@
 # Laporan Proyek Machine Learning - Rafif Idris Ardhana
 
 ## Project Overview: Sistem Rekomendasi Film
-Kebiasaan menonton acara televisi dan film kini menjadi jauh lebih mudah berkat kemajuan internet. Layanan streaming seperti Netflix, Disney+ Hotstar, Vidio, Vision+, dan sejenisnya  memberikan kemudahan bagi pengguna untuk menikmati tayangan favorit mereka kapan saja dan melalui berbagai perangkat. Masing-masing platform ini menyediakan ribuan pilihan tontonan, misalnya Netflix yang memiliki banyak koleksi judul film dari segala penjuru dunia. Contoh lain seperti Vidio yang juga memiliki banyak koleksi film serta akses ke tontonan olahraga favorit. Dengan banyaknya konten yang tersedia, keberadaan sistem rekomendasi menjadi sangat krusial. Sistem ini membantu pengguna menemukan tayangan yang sesuai dengan preferensi mereka, sehingga pengalaman menonton menjadi lebih personal. Dari sisi bisnis, sistem rekomendasi juga berperan dalam memperpanjang waktu interaksi pengguna dengan platform melalui penyajian konten yang relevan. Hal ini berpotensi meningkatkan loyalitas pengguna sekaligus berdampak positif pada pendapatan platform. Oleh karena itu, fitur rekomendasi menjadi elemen esensial yang wajib dimiliki oleh layanan streaming film dan televisi.
+Kebiasaan menonton acara televisi dan film kini menjadi jauh lebih mudah berkat kemajuan internet. Layanan streaming seperti Netflix, Disney+ Hotstar, Vidio, Vision+, dan sejenisnya  memberikan kemudahan bagi pengguna untuk menikmati tayangan favorit mereka kapan saja dan melalui berbagai perangkat. Masing-masing platform ini menyediakan ribuan pilihan tontonan, misalnya Netflix yang memiliki banyak koleksi judul film dari segala penjuru dunia. Contoh lain seperti Vidio yang juga memiliki banyak koleksi film serta akses ke tontonan olahraga favorit.
+
+Dengan banyaknya konten yang tersedia, keberadaan sistem rekomendasi menjadi sangat krusial. Sistem ini membantu pengguna menemukan tayangan yang sesuai dengan preferensi mereka, sehingga pengalaman menonton menjadi lebih personal. Dari sisi bisnis, sistem rekomendasi juga berperan dalam memperpanjang waktu interaksi pengguna dengan platform melalui penyajian konten yang relevan. Hal ini berpotensi meningkatkan loyalitas pengguna sekaligus berdampak positif pada pendapatan platform. Oleh karena itu, fitur rekomendasi menjadi elemen esensial yang wajib dimiliki oleh layanan streaming film dan televisi.
 
 **Rubrik/Kriteria Tambahan**:\
 Proyek ini penting karena mengembangkan sistem rekomendasi film berbasis konten dapat memberikan beberapa manfaat, di antaranya:
@@ -156,7 +158,7 @@ Tahapan ini sangat penting karena:
 - Memudahkan Pemrosesan, mengubah data ke dalam format yang dapat dipahami dan diolah oleh algoritma machine learning.
 - Meningkatkan Kinerja Model, data yang bersih dan relevan akan menghasilkan model yang lebih akurat dan efektif dalam memberikan rekomendasi.
 
-## Modeling and Result
+## Modeling and Results
 ### Modeling
 Pada tahap ini, pengembangan model dilakukan dengan:
 1. **Menggunakan representasi fitur (kolom "tags")**
@@ -178,12 +180,22 @@ Pada tahap ini, pengembangan model dilakukan dengan:
      ![Screenshot 2025-04-26 112744](https://github.com/user-attachments/assets/a2cecd35-4743-45ee-89c0-cd0ec530a0b0)
 
 4. **Membangun Sistem Rekomendasi**
-   - Melakukan reverse mapping guna menampilkan index terlebih dahulu kemudian judul film. Memabngun fungsi `get_recommendation_with_scores` untuk menghasilkan top 10 rekomendasi yang paling relevan terhadap film yang dipilih serta menampilkan skor cosine similarity.
+   - Melakukan reverse mapping guna menampilkan index terlebih dahulu kemudian judul film. Membangun fungsi `get_recommendation_with_scores` untuk menghasilkan top 10 rekomendasi yang paling relevan terhadap film yang dipilih serta menampilkan skor cosine similarity.
    - **Potongan Kode:**
    
      ![Screenshot 2025-04-26 112905](https://github.com/user-attachments/assets/773c772e-0eb3-469b-b822-c59d6116679d)
 
-### Result
+**Parameter yang digunakan**
+1. **TF-IDF Vectorizer**
+   - `max_features=5000`: Mempertahankan maksimal 5000 fitur (kata atau kombinasi kata) yang paling penting atau sering muncul. Guna untuk mengurangi dimensi data dan mempercepat proses komputasi
+   - `stop_words='english'`: Menghapus kata-kata umum dalam bahasa Inggris seperti "the", "is", "and", dsb. Guna menyisakan kata-kata yang informatif saja
+   - `ngram_range=(1,2)`: Mengambil unigram (kata tunggal) dan bigram (pasangan dua kata yang berurutan) sebagai fitur. Guna menangkap konteks yang lebih kaya
+   - Memberikan numerik vektor terhadap kolom `tags` pada dataset `df_final`
+
+2. **Cosine Similarity**
+   - Menghitung kesamaan antar film dalam dataset menggunakan hasil dari vectorizer
+     
+### Results
 Pada tahap ini model diharapkan menghasilkan top-N recommendation sebagai output. Model yang telah dikembangkan akan memberikan Top 10 rekomendasi film yang paling relevan dengan film yang dipilih
 1. **Penggunaan sistem rekomendasi 1 (satu):**
    - **Film yang dipilih:** Iron Man
