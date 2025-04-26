@@ -82,39 +82,38 @@ Dataset terdiri dari dua file utama yaitu:
 **Rubrik/Kriteria Tambahan**:\
 **Exploratory Data Analysis:**
 1. **Univariate Data Analysis**
-   - Mengecek jumlah judul film pada dataset `movies`\
-     Banyaknya judul film pada dataset berjumlah 4800 film, hal ini menandakan adanya indikasi duplikasi data atau missing value, sebab maksimal baris data pada kolom "title" berjumlah 4803 judul\
-     **Potongan kode dan output:**
-     
-     ![Screenshot 2025-04-25 103412](https://github.com/user-attachments/assets/2a62a185-205c-4f14-85f5-698ab336d27c)
+   - **Mengecek jumlah judul film pada dataset `movies`**
+     - Banyaknya judul film pada dataset berjumlah 4800 film, hal ini menandakan adanya indikasi duplikasi data atau missing value, sebab maksimal baris data pada kolom "title" berjumlah 4803 judul
+     - **Potongan kode dan output:**
 
-   - Mengecek distribusi vote average\
-     Mayoritas film memiliki skor rata-rata (vote_average) antara 6 hingga 7, yang menunjukkan bahwa sebagian besar film dalam dataset ini memperoleh penilaian yang cukup baik dari penonton, meskipun tidak terlalu ekstrem.
-     Sehingga film-film di dalam dataset ini kredibel\
-Distribusi rating ini juga menyerupai distribusi normal, mengindikasikan tidak adanya bias besar terhadap rating sangat rendah atau sangat tinggi.\
-    **Hasil Visualisasi:**
+       ![Screenshot 2025-04-25 103412](https://github.com/user-attachments/assets/2a62a185-205c-4f14-85f5-698ab336d27c)
 
-     ![Screenshot 2025-04-25 103325](https://github.com/user-attachments/assets/4708530a-98ee-419b-9830-940ac5f98afa)
+   - **Mengecek distribusi vote average**
+     - Mayoritas film memiliki skor rata-rata (vote_average) antara 6 hingga 7, yang menunjukkan bahwa sebagian besar film dalam dataset ini memperoleh penilaian yang cukup baik dari penonton, meskipun tidak terlalu ekstrem. Sehingga film-film di dalam dataset ini kredibel
+     - Distribusi rating ini juga menyerupai distribusi normal, mengindikasikan tidak adanya bias besar terhadap rating sangat rendah atau sangat tinggi.
+     - **Hasil Visualisasi:**
 
-   - Mengecek distribusi runtime film\
-     Kebanyakan film berdurasi antara 90 hingga 120 menit, yang merupakan standar industri perfilman untuk film layar lebar. Namun, terdapat distribusi yang sedikit condong ke kanan (positively skewed), mengindikasikan adanya sejumlah kecil film berdurasi sangat panjang. Hal ini berkemungkinan target produksi film memang menyajikan film dengan durasi yang panjang.\
-     **Hasil Visualisasi:**
-     
-     ![Screenshot 2025-04-25 103355](https://github.com/user-attachments/assets/e8b4731e-f2ba-4f19-8471-e161f4d336f2)
+       ![Screenshot 2025-04-25 103325](https://github.com/user-attachments/assets/4708530a-98ee-419b-9830-940ac5f98afa)
 
-2. Multivariate Analysis
-   - Melihat korelasi budget vs revenue\
-     Terdapat hubungan positif antara besarnya anggaran produksi film dengan pendapatan yang dihasilkan. Secara umum, film dengan anggaran lebih tinggi cenderung memiliki potensi meraih pendapatan lebih besar.\
-     Namun, hubungan ini tidak bersifat linier, karena terdapat banyak penyimpangan di mana film dengan budget tinggi tidak selalu menghasilkan revenue tinggi. Sebaliknya, beberapa film berbudget rendah juga mampu menghasilkan pendapatan yang cukup besar, menunjukkan bahwa faktor kesuksesan film tidak hanya ditentukan oleh besarnya anggaran.\
-     **Hasil Visualisasi:**
-     
-     ![Screenshot 2025-04-25 103436](https://github.com/user-attachments/assets/a514b163-f28a-4bea-afa6-3967c414ea6c)
+   - **Mengecek distribusi runtime film**
+     - Kebanyakan film berdurasi antara 90 hingga 120 menit, yang merupakan standar industri perfilman untuk film layar lebar. Namun, terdapat distribusi yang sedikit condong ke kanan (positively skewed), mengindikasikan adanya sejumlah kecil film berdurasi sangat panjang. Hal ini berkemungkinan target produksi film memang menyajikan film dengan durasi yang panjang.
+     - **Hasil Visualisasi:**
 
-   - Melihat top 10 film dengan revenue terbanyak\
-     Film dengan revenue terbanyak yaitu Avatar, diikuti dengan Titanic dan The Avengers\
-     **Hasil Visualisasi:**
-     
-     ![Screenshot 2025-04-25 103447](https://github.com/user-attachments/assets/1ddd02ab-7181-45ca-a36b-d5a60a7b0cd3)
+       ![Screenshot 2025-04-25 103355](https://github.com/user-attachments/assets/e8b4731e-f2ba-4f19-8471-e161f4d336f2)
+
+2. **Multivariate Analysis**
+   - **Melihat korelasi budget vs revenue**
+     - Terdapat hubungan positif antara besarnya anggaran produksi film dengan pendapatan yang dihasilkan. Secara umum, film dengan anggaran lebih tinggi cenderung memiliki potensi meraih pendapatan lebih besar.
+     - Namun, hubungan ini tidak bersifat linier, karena terdapat banyak penyimpangan di mana film dengan budget tinggi tidak selalu menghasilkan revenue tinggi. Sebaliknya, beberapa film berbudget rendah juga mampu menghasilkan pendapatan yang cukup besar, menunjukkan bahwa faktor kesuksesan film tidak hanya ditentukan oleh besarnya anggaran.
+     - **Hasil Visualisasi:**
+
+       ![Screenshot 2025-04-25 103436](https://github.com/user-attachments/assets/a514b163-f28a-4bea-afa6-3967c414ea6c)
+
+   - **Melihat top 10 film dengan revenue terbanyak**
+     - Film dengan revenue terbanyak yaitu Avatar, diikuti dengan Titanic dan The Avengers
+     - **Hasil Visualisasi:**
+
+       ![Screenshot 2025-04-25 103447](https://github.com/user-attachments/assets/1ddd02ab-7181-45ca-a36b-d5a60a7b0cd3)
 
 ## Data Preparation
 Melakukan lima tahap persiapan data, yaitu:
@@ -126,7 +125,7 @@ Melakukan lima tahap persiapan data, yaitu:
 
 **Rubrik/Kriteria Tambahan**:
 1. **Merge Dataset**
-   - Mengubah nama kolom pada salah satu dataset guna menyelaraskan nama sebelum penggabungan dengan `rename()`\
+   - Mengubah nama kolom pada salah satu dataset guna menyelaraskan nama sebelum penggabungan dengan `rename()`
     - Melakukan drop pada kolom judul pada salah satu dataset yang serupa di dataset lainnya dengan `drop()`
     - Membuat dataset baru dengan melakukan penggabungan dataset movie dan dataset credits menggunakan `merge()` sebelum memasuki tahap persiapan data
       
@@ -140,30 +139,63 @@ Melakukan lima tahap persiapan data, yaitu:
      Hasil pengecekan tidak terdapatnya duplikasi data pada dataset fitur seleksi
      
 4. **Mengekstrak, Menggabungkan, dan Memberi Bobot List pada Isi Fitur**
-    - Beberapa kolom seperti genres, keywords, cast, dan crew berisi data dalam format JSON. Perlu dilakukan ekstraksi untuk mendapatkan daftar genre, kata kunci, nama aktor, dan nama sutradara
-    - Menggabungkan teks dari kolom overview, genre, keywords, cast, dan crew menjadi satu representasi teks (kolom "tags") untuk setiap film. Ini akan menjadi input utama untuk perhitungan kemiripan konten
-    - Memberikan pembobotan pada fitur yang dianggap berpengaruh seperti fitur keywords, cast, dan crew
+    - Beberapa kolom seperti genres, keywords, cast, dan crew berisi data dalam format JSON. Perlu dilakukan ekstraksi menggunakan fungsi `extract_list` untuk mendapatkan daftar genre, kata kunci, nama aktor, dan nama sutradara
+    - Menggunakan `combine_features` untuk menggabungkan teks dari kolom overview, genre, keywords, cast, dan crew menjadi satu representasi teks (kolom "tags") setiap film. Selain itu, juga memberikan pembobotan pada fitur yang dianggap berpengaruh seperti fitur keywords, cast, dan crew
     - Membuat dataset final yang terdiri dari id film, judul film, dan representasi film ("tags")
 
 5. **Normalisasi Teks (Cleaning Text) pada Isi Fitur**
-    - Melakukan pembersihan (normalisasi) teks pada kolom "tags" sebelum masuk ke tahap modeling. Hal ini dilakukan dengan membuat fungsi `def` agar model dapat mengolah representasi film untuk memperoleh hasil konten yang serupa
-        - Lowercase: Mengubah teks menjadi huruf kecil
-        - Re.sub: Menghilangkan karakter yang bukan spasi dan huruf
-        - Tokenisasi: Memecah teks menjadi unit-unit kata (token)
-        - Stopword Removal: Menghapus kata-kata umum dalam bahasa inggris yang tidak memiliki banyak informasi semantik
-        - Lemmatization: Mengembalikan kata-kata ke dalam bentuk dasarnya, misalnya stories menjadi story
+    - Melakukan pembersihan (normalisasi) teks pada kolom "tags" sebelum masuk ke tahap modeling menggunakan fungsi `clean_text`. Hal ini dilakukan agar model dapat mengolah representasi film untuk memperoleh hasil konten yang serupa
+        - `Lowercase`: Mengubah teks menjadi huruf kecil
+        - `Re.sub`: Menghilangkan karakter yang bukan spasi dan huruf
+        - `Tokenisasi`: Memecah teks menjadi unit-unit kata (token)
+        - `Stopword Removal`: Menghapus kata-kata umum dalam bahasa inggris yang tidak memiliki banyak informasi semantik
+        - `Lemmatization`: Mengembalikan kata-kata ke dalam bentuk dasarnya, misalnya stories menjadi story
 
 Tahapan ini sangat penting karena:
 - Meningkatkan Kualitas Data, menghilangkan atau mengatasi data yang kotor atau tidak lengkap.
 - Memudahkan Pemrosesan, mengubah data ke dalam format yang dapat dipahami dan diolah oleh algoritma machine learning.
 - Meningkatkan Kinerja Model, data yang bersih dan relevan akan menghasilkan model yang lebih akurat dan efektif dalam memberikan rekomendasi.
 
-## Modeling
-Pada tahap ini, pengembangan model dilakukan dengan menggunakan:
-- Representasi Fitur (kolom "tags") yaitu gabungan antara fitur overview, genres, keywords, cast, dan crew
-- Menerapkan algoritma TF-IDF terhadap fitur gabungan untuk mengubahnya menjadi vektor numerik
-- Menghitung cosine similarity antara vektor TF-IDF dari setiap pasangan film. Cosine similarity mengukur sudut antara dua vektor, dengan nilai 1 menunjukkan kemiripan sempurna dan nilai 0 menunjukkan tidak ada kemiripan
-- Untuk memberikan rekomendasi untuk film tertentu, sistem akan mencari film-film lain dengan nilai cosine similarity tertinggi terhadap film tersebut (menapilkan 10 teratas). 
+## Modeling and Result
+### Modeling
+Pada tahap ini, pengembangan model dilakukan dengan:
+1. **Menggunakan representasi fitur (kolom "tags")**
+   - Gabungan antara fitur overview, genres, keywords, cast, dan crew
+   - **Potongan Kode:**
+
+     ![Screenshot 2025-04-26 112209](https://github.com/user-attachments/assets/6469bad7-e70a-4b24-8485-f27391763e58)
+
+2. **Menerapkan algoritma `TF-IDF`**
+   - Dilakukan terhadap fitur gabungan untuk mengubahnya menjadi vektor numerik
+   - **Potongan Kode:**
+
+     ![Screenshot 2025-04-26 112658](https://github.com/user-attachments/assets/9637aee2-cc34-4817-a4e5-bcecd3cfa1db)
+
+3. **Menghitung `Cosine Similarity`**
+   - Dilakukan terhadap vektor TF-IDF dari setiap pasangan film. Cosine similarity mengukur sudut antara dua vektor, dengan nilai 1 menunjukkan kemiripan sempurna dan nilai 0 menunjukkan tidak ada kemiripan
+   - **Potongan Kode:**
+
+     ![Screenshot 2025-04-26 112744](https://github.com/user-attachments/assets/a2cecd35-4743-45ee-89c0-cd0ec530a0b0)
+
+4. **Membangun Sistem Rekomendasi**
+   - Melakukan reverse mapping guna menampilkan index terlebih dahulu kemudian judul film. Memabngun fungsi `get_recommendation_with_scores` untuk menghasilkan top 10 rekomendasi yang paling relevan terhadap film yang dipilih serta menampilkan skor cosine similarity.
+   - **Potongan Kode:**
+   
+     ![Screenshot 2025-04-26 112905](https://github.com/user-attachments/assets/773c772e-0eb3-469b-b822-c59d6116679d)
+
+### Result
+Pada tahap ini model diharapkan menghasilkan top-N recommendation sebagai output. Model yang telah dikembangkan akan memberikan Top 10 rekomendasi film yang paling relevan dengan film yang dipilih
+1. **Penggunaan sistem rekomendasi 1 (satu):**
+   - **Film yang dipilih:** Iron Man
+   - **Hasil:**
+
+     ![Screenshot 2025-04-23 213941](https://github.com/user-attachments/assets/7b6f5638-1dd4-4850-8307-276c17d72b8c)
+
+3. **Penggunaan sistem rekomendasi 2 (dua)**
+   - **Film yang dipilih:** The Fast and the Furious
+   - **Hasil:**
+
+     ![Screenshot 2025-04-23 213958](https://github.com/user-attachments/assets/00f76bf1-3121-4180-9a05-7cd3e4d76dd8)
 
 **Rubrik/Kriteria Tambahan**: 
 - Kelebihan:
@@ -175,7 +207,7 @@ Pada tahap ini, pengembangan model dilakukan dengan menggunakan:
     - Sistem cenderung merekomendasikan item yang sangat mirip dengan item yang disukai atau sedang ditonton, sehingga kurang dalam penemuan konten baru yang berbeda yang mungkin menarik.
 
 ## Evaluation
-**Metode Evaluasi**\
+### **Metode Evaluasi**
 Evaluasi ini tidak menggunakan metrik numerik, sebab evaluasi sistem rekomendasi content-based filteting lebih difokuskan terhadap relevansi rekomendasi berdasarkan fitur metadata.\
 Evaluasi ini hanya dapat dilihat dari cosine similarity (skor kemiripan) terhadap film yang dipilih.
 |    Kategori    |   Skor        |   Definisi                                           |
@@ -192,21 +224,13 @@ Evaluasi ini hanya dapat dilihat dari cosine similarity (skor kemiripan) terhada
 - Film seperti Iron Man 2, Iron Man 3, dan Civil War memang secara narasi dan karakter sangat dekat.
 - Urutan 6 ke bawah memang memiliki skor cosine rendah tetapi masih ada relevansi tema dan universe yang sama dari alur film Iron Man
 
-**Hasil Evaluasi:**
-
-![Screenshot 2025-04-23 213941](https://github.com/user-attachments/assets/7b6f5638-1dd4-4850-8307-276c17d72b8c)
-
 **Evaluasi penggunaan sistem rekomendasi 2 (dua)**\
 **Film yang dipilih: The Fast and the Furious**
 - Top 3 rekomendasi sangat baik - semuanya relevan sebab berasal dari produksi yang sama, memiliki karakter utama yang sama, tema dan gaya penyutradaraan mirip.
 - Rekomendasi film urutan 3 ke atas memiliki narasi yang sangat dekat sebab film-film ini merupakan bagian dari cerita sekuensial film yang dipilih
 - Urutan 4 ke bawah memiliki skor cosine sedang ke rendah, sebab relevansi nya hanya pemeran utama, genre, dan aksi yang sama. Tidak memiliki relevansi yang kuat dengan cerita Fast & Furious\
 
-**Hasil Evaluasi:**
-
-![Screenshot 2025-04-23 213958](https://github.com/user-attachments/assets/00f76bf1-3121-4180-9a05-7cd3e4d76dd8)
-
-**Evaluasi Deskriptif**\
+### **Evaluasi Deskriptif**
 Tanpa penerapan model machine learning seperti sistem rekomendasi, platform streaming akan mengalami berbagai tantangan dalam aspek bisnis. Pengguna akan kesulitan menemukan konten yang sesuai dengan preferensi mereka, sehingga menciptakan pengalaman pengguna yang buruk dan berpotensi menurunkan waktu tayang (watch time). Ketika pengguna merasa tidak puas, kemungkinan besar mereka tidak akan kembali, yang berdampak pada rendahnya retensi pelanggan. Akibatnya, peluang monetisasi juga menurun karena sedikitnya konsumsi konten berbayar dan tidak maksimalnya strategi penawaran konten. Tanpa sistem cerdas yang mampu mempersonalisasi rekomendasi, platform kesulitan bersaing dalam industri yang sangat kompetitif.
 
 **1. Evaluasi terhadap Problem Statement**
@@ -222,18 +246,14 @@ Tanpa penerapan model machine learning seperti sistem rekomendasi, platform stre
   Tujuan ini tercapai dengan berhasil memperoleh output dalam menyajikan daftar film yang memiliki skor cosine similarity tinggi dan sedang, menandakan relevansi yang cukup kuat. Dalam kedua kasus uji (Iron Man dan Fast and Furious), rekomendasi teratas sangat relevan, bahkan melibatkan sekuel atau film dengan universe yang sama.
 
 **3. Evaluasi terhadap Solution Statements**
-- **Menggunakan pendekatan Content-Based Filtering, hal ini dilakukan dengan memanfaatkan deskripsi film, genre, keywords, aktor, dan sutradara sebagai fitur konten. Kemiripan antar film akan diukur berdasarkan kesamaan fitur-fitur ini**\
-  Pendekatan ini berhasil mengukur atau memetakan kemiripan antara film berdasarkan fitur-fitur terpilih, yang memungkinkan sistem memahami konten film secara mendalam
-- **Menggunakan teknik pemrosesan bahasa alami (NLP) seperti tokenization, formatting text, lowercasing, dan lemmatization pada deskripsi film**\
-  Teknik ini berhasil memastikan bahwa text pada fitur diolah menjadi text yang konsisten dan dapat diproses secara efisien dengan TF-IDF
-- **Menggunakan algoritma Term Frequency-Inverse Document Frequency (TF-IDF) untuk mengubah teks deskripsi menjadi vektor numerik**\
-  TF-IDF telah efektif dalam merepresentasikan pentingnya kata-kata (mengubah teks menjadi vektor numerik) dalam fitur "tags" pada dataset final, sehingga membantu sistem menangkap karakteristik unik dari setiap film.
-- **Menghitung cosine similarity antara vektor representasi film untuk mengukur kemiripan konten**\
-  Cosine Similarity mampu memberikan skor numerik kemiripan antar film. Kategori skor kemiripan yang digunakan memberikan interpretasi yang mudah dipahami untuk mengevaluasi hasil.
+- **Menggunakan pendekatan **Content-Based Filtering**, hal ini dilakukan dengan memanfaatkan deskripsi film, genre, keywords, aktor, dan sutradara sebagai fitur konten. Kemiripan antar film akan diukur menggunakan algoritma Term Frequency-Inverse Document Frequency (TF-IDF) dan Cosine Similarity**
+  - TF-IDF telah efektif dalam merepresentasikan pentingnya kata-kata (mengubah teks menjadi vektor numerik) dalam fitur "tags" pada dataset final, sehingga membantu sistem menangkap karakteristik unik dari setiap film.
+  - Cosine Similarity mampu memberikan skor numerik kemiripan antar film. Kategori skor kemiripan yang digunakan memberikan interpretasi yang mudah dipahami untuk mengevaluasi hasil.
+  - Pendekatan ini berhasil mengukur atau memetakan kemiripan antara film berdasarkan fitur-fitur terpilih, yang memungkinkan sistem memahami konten film secara mendalam
 
 **Kesimpulan Evaluasi**\
-Dengan menggunakan Content-Based Filtering menggunakan algoritma TF-IDF dan penilaian Cosine Similarity dalam membangun sistem rekomendasi, diharapkan model ini dapat membantu memberikan dampak signifikan terhadap pemahaman bisnis dan potensi pertumbuhan platform streaming film.
-- Peningkatan user experience, membantu pengguna agar tidak kebingungan memilih film sebab sistem telah memberikan rekomendasi sesuai dengan preferensi mereka
+Dengan menggunakan **Content-Based Filtering** menggunakan algoritma `TF-IDF` dan penilaian `Cosine Similarity` dalam membangun sistem rekomendasi, diharapkan model ini dapat membantu memberikan dampak signifikan terhadap pemahaman bisnis dan potensi pertumbuhan platform streaming film.
+- Peningkatan _user experience_, membantu pengguna agar tidak kebingungan memilih film sebab sistem telah memberikan rekomendasi sesuai dengan preferensi mereka
 - Meningkatkan _watch time_ pengguna, dengan memberikan rekomendasi yang relevan, pengguna mungkin lebih cenderung untuk menghabiskan waktu lebih lama dalam platform
-- Meningkatkan retensi pelanggan, dapat mempertahankan pengguna di platform karena mereka merasa konten yang ditawarkan sesuai dengan selera mereka.
-- Peluang monetasi lebih besar/ dapat meningkat, peningkatan watch time dan loyalitas dapat memberikan peluang konsumsi konten berbayar juga meningkat. Hal ini dapat memberikan peningkatan pendapatan platform.
+- Meningkatkan _cutomer retention_, dapat mempertahankan pengguna di platform karena mereka merasa konten yang ditawarkan sesuai dengan selera mereka.
+- Peluang _monetize_ lebih besar/ dapat meningkat, peningkatan watch time dan loyalitas dapat memberikan peluang konsumsi konten berbayar juga meningkat. Hal ini dapat memberikan peningkatan pendapatan platform.
