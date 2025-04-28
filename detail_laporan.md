@@ -5,7 +5,6 @@ Kebiasaan menonton acara televisi dan film kini menjadi jauh lebih mudah berkat 
 
 Dengan banyaknya konten yang tersedia, keberadaan sistem rekomendasi menjadi sangat krusial. Sistem ini membantu pengguna menemukan tayangan yang sesuai dengan preferensi mereka, sehingga pengalaman menonton menjadi lebih personal. Dari sisi bisnis, sistem rekomendasi juga berperan dalam memperpanjang waktu interaksi pengguna dengan platform melalui penyajian konten yang relevan. Hal ini berpotensi meningkatkan loyalitas pengguna sekaligus berdampak positif pada pendapatan platform. Oleh karena itu, fitur rekomendasi menjadi elemen esensial yang wajib dimiliki oleh layanan streaming film dan televisi.
 
-**Rubrik/Kriteria Tambahan**:\
 Proyek ini penting karena mengembangkan sistem rekomendasi film berbasis konten dapat memberikan beberapa manfaat, di antaranya:
 - Personalisasi Pengalaman Pengguna, dapat meningkatkan kepuasan pengguna dengan menyajikan rekomendasi film yang sesuai dengan minat mereka. Selain itu dapat membantu pengguna menemukan film-film yang mungkin belum mereka pertimbangkan sebelumnya
 - Membantu Pengambilan Keputusan, sistem rekomendasi dapat meningkatkan retensi pengguna, hal ini berkaitan dalam pengambilan keputusan pengguna yang mana dapat merasa terbantu dalam menemukan konten yang menarik di dalam platform
@@ -81,7 +80,6 @@ Dataset terdiri dari dua file utama yaitu:
      - `movies.csv` memiliki kombinasi tipe data yaitu int64, object, float64
      - `credits.csv` memiliki tipe data int64 dan object
 
-**Rubrik/Kriteria Tambahan**:\
 **Exploratory Data Analysis:**
 1. **Univariate Data Analysis**
    - **Mengecek jumlah judul film pada dataset `movies`**
@@ -118,40 +116,55 @@ Dataset terdiri dari dua file utama yaitu:
        ![Screenshot 2025-04-25 103447](https://github.com/user-attachments/assets/1ddd02ab-7181-45ca-a36b-d5a60a7b0cd3)
 
 ## Data Preparation
-Melakukan lima tahap persiapan data, yaitu:
-1. Merge Dataset
-2. Selection Feature
-3. Handling Missing Value dan Duplicate Data
-4. Mengekstrak, Menggabungkan, dan Memberi Bobot List pada Isi Fitur
-5. Normalisasi Teks (Cleaning Text) pada Isi Fitur
+Melakukan delapan tahap persiapan data, yaitu:
+1. Rename Column
+2. Drop Column
+3. Merge Dataset
+4. Selection Feature
+5. Handling Missing Value dan Duplicate Data
+6. Mengekstrak, Menggabungkan, dan Memberi Bobot List pada Isi Fitur
+7. Normalisasi Teks (Cleaning Text) pada Isi Fitur
+8. Vectorization TF-IDF
 
-**Rubrik/Kriteria Tambahan**:
-1. **Merge Dataset**
+**Penjelasan Pengerjaan Persiapan Data:**
+1. **Rename Column**
    - Mengubah nama kolom pada salah satu dataset guna menyelaraskan nama sebelum penggabungan dengan `rename()`
-    - Melakukan drop pada kolom judul pada salah satu dataset yang serupa di dataset lainnya dengan `drop()`
-    - Membuat dataset baru dengan melakukan penggabungan dataset movie dan dataset credits menggunakan `merge()` sebelum memasuki tahap persiapan data
+     
+2. **Drop Column**
+   - Melakukan drop pada kolom judul (title) pada salah satu dataset yang serupa di dataset lainnya dengan `drop()`
+     
+3. **Merge Dataset**
+   - Membuat dataset baru dengan melakukan penggabungan dataset movie dan dataset credits menggunakan `merge()` sebelum memasuki tahap persiapan data
       
-2. **Selection Feature**
+4. **Selection Feature**
    - Membuat dataset baru, dengan memilih fitur yang dibutuhkan saja. Kolom `id`, `title`, `genres`, `keywords`, `overview`, `cast`, dan `crew` dianggap penting sebab dapat merepresentasikan sebuah film
      
-3. **Handling Missing Value dan Duplicate Data**
+5. **Handling Missing Value dan Duplicate Data**
    - Terindikasi 3 missing value pada overview\
      Sebab gambaran umum (overview) dari film tidak kita ketahui, lebih baik baris missing value di hapus. Sehingga dataset terdiri dari 4800 baris dan 7 kolom penting
    - Pengecekan Duplikasi Data/
      Hasil pengecekan tidak terdapatnya duplikasi data pada dataset fitur seleksi
      
-4. **Mengekstrak, Menggabungkan, dan Memberi Bobot List pada Isi Fitur**
+6. **Mengekstrak, Menggabungkan, dan Memberi Bobot List pada Isi Fitur**
     - Beberapa kolom seperti genres, keywords, cast, dan crew berisi data dalam format JSON. Perlu dilakukan ekstraksi menggunakan fungsi `extract_list` untuk mendapatkan daftar genre, kata kunci, nama aktor, dan nama sutradara
     - Menggunakan `combine_features` untuk menggabungkan teks dari kolom overview, genre, keywords, cast, dan crew menjadi satu representasi teks (kolom "tags") setiap film. Selain itu, juga memberikan pembobotan pada fitur yang dianggap berpengaruh seperti fitur keywords, cast, dan crew
     - Membuat dataset final yang terdiri dari id film, judul film, dan representasi film ("tags")
 
-5. **Normalisasi Teks (Cleaning Text) pada Isi Fitur**
+7. **Normalisasi Teks (Cleaning Text) pada Isi Fitur**
     - Melakukan pembersihan (normalisasi) teks pada kolom "tags" sebelum masuk ke tahap modeling menggunakan fungsi `clean_text`. Hal ini dilakukan agar model dapat mengolah representasi film untuk memperoleh hasil konten yang serupa
         - `Lowercase`: Mengubah teks menjadi huruf kecil
         - `Re.sub`: Menghilangkan karakter yang bukan spasi dan huruf
         - `Tokenisasi`: Memecah teks menjadi unit-unit kata (token)
         - `Stopword Removal`: Menghapus kata-kata umum dalam bahasa inggris yang tidak memiliki banyak informasi semantik
         - `Lemmatization`: Mengembalikan kata-kata ke dalam bentuk dasarnya, misalnya stories menjadi story
+     
+8. **Vectorization TF-IDF**
+   - Dilakukan terhadap fitur gabungan (overview, genres, keywords, cast, dan crew) yang telah digabung ke dalam kolom "tags" untuk mengubahnya menjadi vektor numerik agar dapat mengukur pentingnya sebuah kata dalam sebuah dokumen relatif terhadap kumpulan dokumen lainnya.
+   - **Parameter yang digunakan:**
+     - `max_features=5000`: Mempertahankan maksimal 5000 fitur (kata atau kombinasi kata) yang paling penting atau sering muncul. Guna untuk mengurangi dimensi data dan mempercepat proses komputasi
+     - `stop_words='english'`: Menghapus kata-kata umum dalam bahasa Inggris seperti "the", "is", "and", dsb. Guna menyisakan kata-kata yang informatif saja
+     - `ngram_range=(1,2)`: Mengambil unigram (kata tunggal) dan bigram (pasangan dua kata yang berurutan) sebagai fitur. Guna menangkap konteks yang lebih kaya
+     - Memberikan numerik vektor terhadap kolom `tags` pada dataset `df_final
 
 Tahapan ini sangat penting karena:
 - Meningkatkan Kualitas Data, menghilangkan atau mengatasi data yang kotor atau tidak lengkap.
@@ -160,56 +173,36 @@ Tahapan ini sangat penting karena:
 
 ## Modeling and Results
 ### Modeling
-Pada tahap ini, pengembangan model dilakukan dengan:
-1. **Menggunakan representasi fitur (kolom "tags")**
-   - Gabungan antara fitur overview, genres, keywords, cast, dan crew
-   - **Potongan Kode:**
-
-     ![Screenshot 2025-04-26 112209](https://github.com/user-attachments/assets/6469bad7-e70a-4b24-8485-f27391763e58)
-
-2. **Menerapkan algoritma `TF-IDF`**
-   - Dilakukan terhadap fitur gabungan untuk mengubahnya menjadi vektor numerik
-   - **Potongan Kode:**
-
-     ![Screenshot 2025-04-26 112658](https://github.com/user-attachments/assets/9637aee2-cc34-4817-a4e5-bcecd3cfa1db)
-
-3. **Menghitung `Cosine Similarity`**
+1. **Menggunakan `Cosine Similarity`**
    - Dilakukan terhadap vektor TF-IDF dari setiap pasangan film. Cosine similarity mengukur sudut antara dua vektor, dengan nilai 1 menunjukkan kemiripan sempurna dan nilai 0 menunjukkan tidak ada kemiripan
    - **Potongan Kode:**
 
      ![Screenshot 2025-04-26 112744](https://github.com/user-attachments/assets/a2cecd35-4743-45ee-89c0-cd0ec530a0b0)
 
-4. **Membangun Sistem Rekomendasi**
-   - Melakukan reverse mapping guna menampilkan index terlebih dahulu kemudian judul film. Membangun fungsi `get_recommendation_with_scores` untuk menghasilkan top 10 rekomendasi yang paling relevan terhadap film yang dipilih serta menampilkan skor cosine similarity.
+2. **Membangun Sistem Rekomendasi**
+   - Melakukan reverse mapping guna menampilkan index terlebih dahulu kemudian judul film
+   - Membangun fungsi `get_recommendation_with_scores` untuk menghasilkan top 10 rekomendasi yang paling relevan terhadap film yang dipilih serta menampilkan skor cosine similarity.
    - **Potongan Kode:**
    
-     ![Screenshot 2025-04-26 112905](https://github.com/user-attachments/assets/773c772e-0eb3-469b-b822-c59d6116679d)
+     ![Screenshot 2025-04-29 003403](https://github.com/user-attachments/assets/f4df060b-0087-42cd-9ad3-36953919c954)
 
-**Parameter yang digunakan**
-1. **TF-IDF Vectorizer**
-   - `max_features=5000`: Mempertahankan maksimal 5000 fitur (kata atau kombinasi kata) yang paling penting atau sering muncul. Guna untuk mengurangi dimensi data dan mempercepat proses komputasi
-   - `stop_words='english'`: Menghapus kata-kata umum dalam bahasa Inggris seperti "the", "is", "and", dsb. Guna menyisakan kata-kata yang informatif saja
-   - `ngram_range=(1,2)`: Mengambil unigram (kata tunggal) dan bigram (pasangan dua kata yang berurutan) sebagai fitur. Guna menangkap konteks yang lebih kaya
-   - Memberikan numerik vektor terhadap kolom `tags` pada dataset `df_final`
-
-2. **Cosine Similarity**
-   - Menghitung kesamaan antar film dalam dataset menggunakan hasil dari vectorizer
      
 ### Results
-Pada tahap ini model diharapkan menghasilkan top-N recommendation sebagai output. Model yang telah dikembangkan akan memberikan Top 10 rekomendasi film yang paling relevan dengan film yang dipilih
+Pada tahap ini model diharapkan menghasilkan top-N recommendation sebagai output. Model yang telah dikembangkan akan memberikan Top 5 rekomendasi film yang paling relevan dengan film yang dipilih
 1. **Penggunaan sistem rekomendasi 1 (satu):**
    - **Film yang dipilih:** Iron Man
    - **Hasil:**
+     
+     ![Screenshot 2025-04-29 001819](https://github.com/user-attachments/assets/f79f108d-cad5-48a2-8fdd-0b6ad9bfc271)
 
-     ![Screenshot 2025-04-23 213941](https://github.com/user-attachments/assets/7b6f5638-1dd4-4850-8307-276c17d72b8c)
 
-3. **Penggunaan sistem rekomendasi 2 (dua)**
+2. **Penggunaan sistem rekomendasi 2 (dua)**
    - **Film yang dipilih:** The Fast and the Furious
    - **Hasil:**
+     
+     ![Screenshot 2025-04-29 001830](https://github.com/user-attachments/assets/417419d8-f5ed-4bc7-acba-ae64f626d6db)
 
-     ![Screenshot 2025-04-23 213958](https://github.com/user-attachments/assets/00f76bf1-3121-4180-9a05-7cd3e4d76dd8)
 
-**Rubrik/Kriteria Tambahan**: 
 - Kelebihan:
     - Sistem dapat memberikan rekomendasi bahkan untuk pengguna baru tanpa riwayat interaksi
     - Alasan rekomendasi dapat dijelaskan berdasarkan kemiripan fitur konten
@@ -220,27 +213,30 @@ Pada tahap ini model diharapkan menghasilkan top-N recommendation sebagai output
 
 ## Evaluation
 ### **Metode Evaluasi**
-Evaluasi ini tidak menggunakan metrik numerik, sebab evaluasi sistem rekomendasi content-based filteting lebih difokuskan terhadap relevansi rekomendasi berdasarkan fitur metadata.\
-Evaluasi ini hanya dapat dilihat dari cosine similarity (skor kemiripan) terhadap film yang dipilih.
-|    Kategori    |   Skor        |   Definisi                                           |
-|----------------|---------------|------------------------------------------------------|
-| Sangat Tinggi  |  > 0.60       | Sangat Mirip banget (biasanya sekuel atau satu seri) |
-| Tinggi         |  0.50 - 0.60  | Masih sangat relevan                                 |
-| Sedang         |  0.30 - 0.50  | Mirip secara tema/genre/universe                     |
-| Rendah         |  < 0.30       | Sudah mulai kurang relevan                           |
-
+Evaluasi ini berbasis relevansi rekomendasi yaitu Precision, dengan formula sebagai berikut\
+`Precision = Jumlah rekomendasi film yang relevan / Jumlah item film yang direkomendasikan`
+  
 **Evaluasi penggunaan sistem rekomendasi 1 (satu):**\
 **Film yang dipilih: Iron Man**
-- Top 5 rekomendasi sangat baik — semuanya berada dalam narasi atau konflik yang dekat dengan Tony Stark/Iron Man.
-- Skor cosine similarity di atas 0.4 bisa dianggap cukup bagus untuk TF-IDF sederhana.
-- Film seperti Iron Man 2, Iron Man 3, dan Civil War memang secara narasi dan karakter sangat dekat.
-- Urutan 6 ke bawah memang memiliki skor cosine rendah tetapi masih ada relevansi tema dan universe yang sama dari alur film Iron Man
+- Precision = 5/5
+- Hasil Presisi Sistem Rekomendasi Film untuk Iron Man = 100%
+- **Alasan Relevansi:**
+  - Iron Man 2 → Sangat relevan (sekuel langsung)
+  - Iron Man 3 → Sangat relevan (sekuel langsung)
+  - Avengers: Age of Ultron → Relevan (Iron Man sangat berperan di film ini)
+  - The Avengers → Relevan (Iron Man juga karakter utama)
+  - Captain America: Civil War → Relevan (Iron Man juga memiliki peran utama di sini)
 
 **Evaluasi penggunaan sistem rekomendasi 2 (dua)**\
 **Film yang dipilih: The Fast and the Furious**
-- Top 3 rekomendasi sangat baik - semuanya relevan sebab berasal dari produksi yang sama, memiliki karakter utama yang sama, tema dan gaya penyutradaraan mirip.
-- Rekomendasi film urutan 3 ke atas memiliki narasi yang sangat dekat sebab film-film ini merupakan bagian dari cerita sekuensial film yang dipilih
-- Urutan 4 ke bawah memiliki skor cosine sedang ke rendah, sebab relevansi nya hanya pemeran utama, genre, dan aksi yang sama. Tidak memiliki relevansi yang kuat dengan cerita Fast & Furious\
+- Precision = 3/5
+- Hasil Presisi Sistem Rekomendasi Film untuk The Fast and the Furious = 60%
+- **Alasan Relevansi:**
+  - Furious 7 → Relevan (satu franchise Fast and Furious)
+  - 2 Fast 2 Furious → Relevan (sekuel Fast and Furious)
+  - Fast Five → Relevan (seri kelima Fast and Furious)
+  - Babylon A.D. → Kurang relevan (film aksi fiksi ilmiah, memang dibintangi Vin Diesel, tapi bukan bagian dari Fast and Furious)
+  - xXx → Kurang relevan (juga film aksi Vin Diesel, tapi beda universe, bukan Fast and Furious)
 
 ### **Evaluasi Deskriptif**
 Tanpa penerapan model machine learning seperti sistem rekomendasi, platform streaming akan mengalami berbagai tantangan dalam aspek bisnis. Pengguna akan kesulitan menemukan konten yang sesuai dengan preferensi mereka, sehingga menciptakan pengalaman pengguna yang buruk dan berpotensi menurunkan waktu tayang (watch time). Ketika pengguna merasa tidak puas, kemungkinan besar mereka tidak akan kembali, yang berdampak pada rendahnya retensi pelanggan. Akibatnya, peluang monetisasi juga menurun karena sedikitnya konsumsi konten berbayar dan tidak maksimalnya strategi penawaran konten. Tanpa sistem cerdas yang mampu mempersonalisasi rekomendasi, platform kesulitan bersaing dalam industri yang sangat kompetitif.
@@ -264,7 +260,7 @@ Tanpa penerapan model machine learning seperti sistem rekomendasi, platform stre
   - Pendekatan ini berhasil mengukur atau memetakan kemiripan antara film berdasarkan fitur-fitur terpilih, yang memungkinkan sistem memahami konten film secara mendalam
 
 **Kesimpulan Evaluasi**\
-Dengan menggunakan **Content-Based Filtering** menggunakan algoritma `TF-IDF` dan penilaian `Cosine Similarity` dalam membangun sistem rekomendasi, diharapkan model ini dapat membantu memberikan dampak signifikan terhadap pemahaman bisnis dan potensi pertumbuhan platform streaming film.
+Dengan menggunakan pendekatan **Content-Based Filtering** menggunakan `TF-IDF` dan `Cosine Similarity` dalam membangun sistem rekomendasi, diharapkan model ini dapat membantu memberikan dampak signifikan terhadap pemahaman bisnis dan potensi pertumbuhan platform streaming film.
 - Peningkatan _user experience_, membantu pengguna agar tidak kebingungan memilih film sebab sistem telah memberikan rekomendasi sesuai dengan preferensi mereka
 - Meningkatkan _watch time_ pengguna, dengan memberikan rekomendasi yang relevan, pengguna mungkin lebih cenderung untuk menghabiskan waktu lebih lama dalam platform
 - Meningkatkan _cutomer retention_, dapat mempertahankan pengguna di platform karena mereka merasa konten yang ditawarkan sesuai dengan selera mereka.
