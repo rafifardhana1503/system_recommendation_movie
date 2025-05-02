@@ -217,7 +217,7 @@ Metrik evaluasi yang digunakan adalah **precision**, yaitu rasio antara jumlah i
    - **Preferensi Pengguna:**
      - Menyukai genre Action, Adventure, Science, Fiction
      - Genre "Science fiction" dipisah menjadi dua kata karena kolom `tags` adalah gabungan kata per token
-   - **Hasil Rekomendasi dan Hasil Evaluasi**
+   - **Hasil Rekomendasi terhadap Kecocokan Preferensi Pengguna**
      | title                       | genres_match |
      |-----------------------------|--------------|
      | Iron Man 2                  | True         |
@@ -238,7 +238,7 @@ Metrik evaluasi yang digunakan adalah **precision**, yaitu rasio antara jumlah i
    **Film yang dipilih: Harry Potter and the Prisoner of Azkaban**
    - **Preferensi Pengguna:**
      - Menyukai genre Adventure, Fantasy, Family
-   - **Hasil Rekomendasi dan Hasil Evaluasi**
+   - **Hasil Rekomendasi terhadap Kecocokan Preferensi Pengguna**
      | title                                     | genres_match |
      |-------------------------------------------|--------------|
      | Harry Potter and the Chamber of Secrets   | True         |
