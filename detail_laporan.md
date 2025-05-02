@@ -218,13 +218,13 @@ Metrik evaluasi yang digunakan adalah **precision**, yaitu rasio antara jumlah i
      - Menyukai genre Action, Adventure, Science, Fiction
      - Genre "Science fiction" dipisah menjadi dua kata karena kolom `tags` adalah gabungan kata per token
    - **Hasil Rekomendasi terhadap Kecocokan Preferensi Pengguna**
-     | title                       | genres_match |
-     |-----------------------------|--------------|
-     | Iron Man 2                  | True         |
-     | Iron Man 3                  | True         |
-     | Avengers: Age of Ultron     | True         |
-     | The Avengers                | True         |
-     | Captain America: Civil War  | True         |
+     | title                       | genres_match | relevant_tags                       | jumlah_match |
+     |-----------------------------|--------------|-------------------------------------|--------------|
+     | Iron Man 2                  | True         | adventure, fiction, science, action | 4            |
+     | Iron Man 3                  | True         | adventure, fiction, science, action | 4            |
+     | Avengers: Age of Ultron     | True         | adventure, fiction, science, action | 4            |
+     | The Avengers                | True         | adventure, fiction, science, action | 4            |
+     | Captain America: Civil War  | True         | adventure, fiction, science, action | 4            |
 
      Semua film yang direkomendasikan mengandung keempat keyword genre dalam tags, sehingga semuanya dianggap relevan terhadap preferensi pengguna.
    - **Perhitungan Presicion**
@@ -239,13 +239,13 @@ Metrik evaluasi yang digunakan adalah **precision**, yaitu rasio antara jumlah i
    - **Preferensi Pengguna:**
      - Menyukai genre Adventure, Fantasy, Family
    - **Hasil Rekomendasi terhadap Kecocokan Preferensi Pengguna**
-     | title                                     | genres_match |
-     |-------------------------------------------|--------------|
-     | Harry Potter and the Chamber of Secrets   | True         |
-     | Harry Potter and the Order of the Phoenix | True         |
-     | Harry Potter and the Half-Blood Prince    | True         |
-     | Harry Potter and the Goblet of Fire       | True         |
-     | Harry Potter and the Philosopher's Stone  | True         |
+     | title                                     | genres_match | relevant_tags              | jumlah_match |
+     |-------------------------------------------|--------------|----------------------------|--------------|
+     | Harry Potter and the Chamber of Secrets   | True         | adventure, fantasy, family | 3            |
+     | Harry Potter and the Order of the Phoenix | True         | adventure, fantasy, family | 3            |
+     | Harry Potter and the Half-Blood Prince    | True         | adventure, fantasy, family | 3            |
+     | Harry Potter and the Goblet of Fire       | True         | adventure, fantasy, family | 3            |
+     | Harry Potter and the Philosopher's Stone  | True         | adventure, fantasy, family | 3            |
 
      Semua film yang direkomendasikan adalah bagian dari serial Harry Potter. Representasi kolom tags dari setiap film yang direkomendasikan memuat indikasi tema petualangan, dunia fantasi, dan kekeluargaan. Sehingga semuanya dianggap relevan terhadap preferensi pengguna.
    - **Perhitungan Precision**
