@@ -210,7 +210,12 @@ Metrik evaluasi yang digunakan adalah **precision**, yaitu rasio antara jumlah i
 - Formula:\
 `Precision` = `Jumlah rekomendasi film yang relevan` / `Jumlah item film yang direkomendasikan`
 
-- Pendekatan evaluasi dilakukan berdasarkan kecocokan kata-kata kunci genre yang muncul dalam kolom "tags" yang telah diproses sebagai representasi konten tiap film.
+- Pendekatan evaluasi dilakukan berdasarkan kecocokan kata-kata kunci genre yang muncul dalam kolom "tags" yang telah diproses sebagai representasi konten tiap film.\
+  Cara Kerja:
+  - Sistem merekomendasikan sejumlah film kepada user berdasarkan preferensi user
+  - Untuk nilai relevansi, setiap film dicek apakah mengandung semua genre yang menjadi preferensi pengguna dalam kolom tags
+  - Jika genre cocok → anggap relevan/match
+  - Precision disini akan mengukur berapa banyak rekomendasi yang benar-benar sesuai dari semua yang diberikan
   
 1. **Evaluasi penggunaan sistem rekomendasi 1 (satu):**\
    **Film yang dipilih: Iron Man**
