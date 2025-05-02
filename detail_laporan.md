@@ -226,7 +226,7 @@ Metrik evaluasi yang digunakan adalah **precision**, yaitu rasio antara jumlah i
      | The Avengers                | True         | adventure, fiction, science, action | 4            |
      | Captain America: Civil War  | True         | adventure, fiction, science, action | 4            |
 
-     Semua film yang direkomendasikan mengandung keempat keyword genre dalam tags, sehingga semuanya dianggap relevan terhadap preferensi pengguna.
+     Semua film yang direkomendasikan mengandung keempat keyword genre dalam tags yaitu Action, Adventure, Science, Fiction. Sehingga semuanya dianggap relevan terhadap preferensi pengguna.
    - **Perhitungan Presicion**
      - Jumlah film yang relevan (genre cocok) = 5
      - Jumlah film yang direkomendasikan      = 5
@@ -247,7 +247,7 @@ Metrik evaluasi yang digunakan adalah **precision**, yaitu rasio antara jumlah i
      | Harry Potter and the Goblet of Fire       | True         | adventure, fantasy, family | 3            |
      | Harry Potter and the Philosopher's Stone  | True         | adventure, fantasy, family | 3            |
 
-     Semua film yang direkomendasikan adalah bagian dari serial Harry Potter. Representasi kolom tags dari setiap film yang direkomendasikan memuat indikasi tema petualangan, dunia fantasi, dan kekeluargaan. Sehingga semuanya dianggap relevan terhadap preferensi pengguna.
+     Semua film yang direkomendasikan adalah bagian dari serial Harry Potter. Representasi kolom tags dari setiap film yang direkomendasikan memuat indikasi tema Adventure, Fantasy, Family. Sehingga semuanya dianggap relevan terhadap preferensi pengguna.
    - **Perhitungan Precision**
      - Jumlah film yang relevan (genre cocok) = 5
      - Jumlah film yang direkomendasikan      = 5
