@@ -175,17 +175,10 @@ Tahapan ini sangat penting karena:
 ### Modeling
 1. **Menggunakan `Cosine Similarity`**
    - Dilakukan terhadap vektor TF-IDF dari setiap pasangan film. Cosine similarity mengukur sudut antara dua vektor, dengan nilai 1 menunjukkan kemiripan sempurna dan nilai 0 menunjukkan tidak ada kemiripan
-   - **Potongan Kode:**
-
-     ![Screenshot 2025-04-26 112744](https://github.com/user-attachments/assets/a2cecd35-4743-45ee-89c0-cd0ec530a0b0)
 
 2. **Membangun Sistem Rekomendasi**
    - Melakukan reverse mapping guna menampilkan index terlebih dahulu kemudian judul film
-   - Membangun fungsi `get_recommendation_with_scores` untuk menghasilkan top 10 rekomendasi yang paling relevan terhadap film yang dipilih serta menampilkan skor cosine similarity.
-   - **Potongan Kode:**
-   
-     ![Screenshot 2025-04-29 003403](https://github.com/user-attachments/assets/f4df060b-0087-42cd-9ad3-36953919c954)
-
+   - Membangun fungsi `get_recommendation_with_scores` untuk menghasilkan top 5 rekomendasi yang paling relevan terhadap film yang dipilih serta menampilkan skor cosine similarity.
      
 ### Results
 Pada tahap ini model diharapkan menghasilkan top-N recommendation sebagai output. Model yang telah dikembangkan akan memberikan Top 5 rekomendasi film yang paling relevan dengan film yang dipilih
@@ -197,10 +190,10 @@ Pada tahap ini model diharapkan menghasilkan top-N recommendation sebagai output
 
 
 2. **Penggunaan sistem rekomendasi 2 (dua)**
-   - **Film yang dipilih:** The Fast and the Furious
+   - **Film yang dipilih:** Harry Potter and the Prisoner of Azkaban
    - **Hasil:**
      
-     ![Screenshot 2025-04-29 001830](https://github.com/user-attachments/assets/417419d8-f5ed-4bc7-acba-ae64f626d6db)
+     ![Screenshot 2025-05-02 102926](https://github.com/user-attachments/assets/a250dd9c-f183-4cb8-b1fe-ccc00d3a9f76)
 
 
 - Kelebihan:
@@ -212,31 +205,55 @@ Pada tahap ini model diharapkan menghasilkan top-N recommendation sebagai output
     - Sistem cenderung merekomendasikan item yang sangat mirip dengan item yang disukai atau sedang ditonton, sehingga kurang dalam penemuan konten baru yang berbeda yang mungkin menarik.
 
 ## Evaluation
-### **Metode Evaluasi**
-Evaluasi ini berbasis relevansi rekomendasi yaitu Precision, dengan formula sebagai berikut\
-`Precision = Jumlah rekomendasi film yang relevan / Jumlah item film yang direkomendasikan`
-  
-**Evaluasi penggunaan sistem rekomendasi 1 (satu):**\
-**Film yang dipilih: Iron Man**
-- Precision = 5/5
-- Hasil Presisi Sistem Rekomendasi Film untuk Iron Man = 100%
-- **Alasan Relevansi:**
-  - Iron Man 2 → Sangat relevan (sekuel langsung)
-  - Iron Man 3 → Sangat relevan (sekuel langsung)
-  - Avengers: Age of Ultron → Relevan (Iron Man sangat berperan di film ini)
-  - The Avengers → Relevan (Iron Man juga karakter utama)
-  - Captain America: Civil War → Relevan (Iron Man juga memiliki peran utama di sini)
+### Evaluasi Numerik
+Metrik evaluasi yang digunakan adalah **precision**, yaitu rasio antara jumlah item yang benar-benar relevan dibandingkan dengan jumlah total item yang direkomendasikan.
+- Formula:\
+`Precision` = `Jumlah rekomendasi film yang relevan` / `Jumlah item film yang direkomendasikan`
 
-**Evaluasi penggunaan sistem rekomendasi 2 (dua)**\
-**Film yang dipilih: The Fast and the Furious**
-- Precision = 3/5
-- Hasil Presisi Sistem Rekomendasi Film untuk The Fast and the Furious = 60%
-- **Alasan Relevansi:**
-  - Furious 7 → Relevan (satu franchise Fast and Furious)
-  - 2 Fast 2 Furious → Relevan (sekuel Fast and Furious)
-  - Fast Five → Relevan (seri kelima Fast and Furious)
-  - Babylon A.D. → Kurang relevan (film aksi fiksi ilmiah, memang dibintangi Vin Diesel, tapi bukan bagian dari Fast and Furious)
-  - xXx → Kurang relevan (juga film aksi Vin Diesel, tapi beda universe, bukan Fast and Furious)
+- Pendekatan evaluasi dilakukan berdasarkan kecocokan kata-kata kunci genre yang muncul dalam kolom "tags" yang telah diproses sebagai representasi konten tiap film.
+  
+1. **Evaluasi penggunaan sistem rekomendasi 1 (satu):**\
+   **Film yang dipilih: Iron Man**
+   - **Preferensi Pengguna:**
+     - Menyukai genre Action, Adventure, Science, Fiction
+     - Genre "Science fiction" dipisah menjadi dua kata karena kolom `tags` adalah gabungan kata per token
+   - **Hasil Rekomendasi dan Hasil Evaluasi**
+     | title                       | genres_match |
+     |-----------------------------|--------------|
+     | Iron Man 2                  | True         |
+     | Iron Man 3                  | True         |
+     | Avengers: Age of Ultron     | True         |
+     | The Avengers                | True         |
+     | Captain America: Civil War  | True         |
+
+     Semua film yang direkomendasikan mengandung keempat keyword genre dalam tags, sehingga semuanya dianggap relevan terhadap preferensi pengguna.
+   - **Perhitungan Presicion**
+     - Jumlah film yang relevan (genre cocok) = 5
+     - Jumlah film yang direkomendasikan      = 5
+     - Precision                              = 5/5 = 1.00 → 100%
+       
+    Sistem rekomendasi menunjukkan akurasi sempurna (100%) dalam konteks preferensi genre berbasis kolom `tags` dan seluruh rekomendasi film berhasil memenuhi kriteria genre yang diinginkan oleh pengguna
+
+2. **Evaluasi penggunaan sistem rekomendasi 2 (dua):**\
+   **Film yang dipilih: Harry Potter and the Prisoner of Azkaban**
+   - **Preferensi Pengguna:**
+     - Menyukai genre Adventure, Fantasy, Family
+   - **Hasil Rekomendasi dan Hasil Evaluasi**
+     | title                                     | genres_match |
+     |-------------------------------------------|--------------|
+     | Harry Potter and the Chamber of Secrets   | True         |
+     | Harry Potter and the Order of the Phoenix | True         |
+     | Harry Potter and the Half-Blood Prince    | True         |
+     | Harry Potter and the Goblet of Fire       | True         |
+     | Harry Potter and the Philosopher's Stone  | True         |
+
+     Semua film yang direkomendasikan adalah bagian dari serial Harry Potter. Representasi kolom tags dari setiap film yang direkomendasikan memuat indikasi tema petualangan, dunia fantasi, dan kekeluargaan. Sehingga semuanya dianggap relevan terhadap preferensi pengguna.
+   - **Perhitungan Precision**
+     - Jumlah film yang relevan (genre cocok) = 5
+     - Jumlah film yang direkomendasikan      = 5
+     - Precision                              = 5/5 = 1.00 → 100%
+
+     Sistem rekomendasi menunjukkan akurasi sempurna (100%) dalam konteks preferensi genre berbasis kolom `tags` dan seluruh rekomendasi film berhasil memenuhi kriteria genre yang diinginkan oleh pengguna.
 
 ### **Evaluasi Deskriptif**
 Tanpa penerapan model machine learning seperti sistem rekomendasi, platform streaming akan mengalami berbagai tantangan dalam aspek bisnis. Pengguna akan kesulitan menemukan konten yang sesuai dengan preferensi mereka, sehingga menciptakan pengalaman pengguna yang buruk dan berpotensi menurunkan waktu tayang (watch time). Ketika pengguna merasa tidak puas, kemungkinan besar mereka tidak akan kembali, yang berdampak pada rendahnya retensi pelanggan. Akibatnya, peluang monetisasi juga menurun karena sedikitnya konsumsi konten berbayar dan tidak maksimalnya strategi penawaran konten. Tanpa sistem cerdas yang mampu mempersonalisasi rekomendasi, platform kesulitan bersaing dalam industri yang sangat kompetitif.
